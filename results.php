@@ -7,13 +7,13 @@
 	$size = $_POST['size'];
 
   // calculating base cost using if statements
-  if (size == "pequena") {
+  if ($size == "pequena") {
     $base_cost = 7.45;
   }
-  else if (size == "mediana") {
+  else if ($size == "mediana") {
     	$base_cost = 9.35;
   	}
-  	else if (size == "grande") {		
+  	else if ($size == "grande") {		
     	$base_cost = 11.95;
   	}    
 
@@ -21,31 +21,31 @@
   define("TOPPING_PRICE", 0.50);
 
   // initializing topping cost variable
-  $topping_cost = 0;
+  $num_toppings = 0;
 
   // adding to topping cost based on checkboxes checked (if guacamole is clicked)
   if (isset($_POST["topping1"])) {
-    $topping_cost++;
+    $num_toppings++;
   }
   // if pico de gallo is clicked
   if (isset($_POST["topping2"])) {
-    $topping_cost++;
+    $num_toppings++;
   }
   // if mexican crema is clicked
   if (isset($_POST["topping3"])) {
-    $topping_cost++;
+    $num_toppings++;
   }
   // if medium cheddar is clicked
   if (isset($_POST["topping4"])) {
-    $topping_cost++;
+    $num_toppings++;
   }
   // if cilantro lime rice is clicked
   if (isset($_POST["topping5"])) {
-    $topping_cost++;
+    $num_toppings++;
   }
   // if black beans is clicked
   if (isset($_POST["topping6"])) {
-    $topping_cost++;
+    $num_toppings++;
   }
   
   // determining topping cost
@@ -55,22 +55,25 @@
   $side_drink = 0;
   $side_nachos = 0;
 
+  // determining whether user wants a margarita or not by determining which radio button is selected
+  $sideDrinkChecked = $_POST["sidedrink"];
 
-  // determining whether user wants a margarita or not by determining which radio button is selected 
-  if (isset($_POST["sidedrink-yes"])) {
+  if ($sideDrinkChecked == "sidedrink-yes") {
     $side_drink = 8.15;
   }
     
-  else if (isset($_POST["sidedrink-no"])) {
+  else if ($sideDrinkChecked == "sidedrink-no") {
     $side_drink = 0;
   }
 
   //determining whether or not user wants a chips and salsa side order based on which radio button is selected
-  if (isset($_POST["sideorder-yes"])) {
+  $sideOrderChecked = $_POST["sideorder"];
+
+  if ($sideOrderChecked == "sideorder-yes") {
     $side_nachos = 4.25;
   }
 
-  else if (isset($_POST["sideorder-no"])) {
+  else if ($sideOrderChecked == "sideorder-no") {
     $side_nachos = 0;
   }
 
@@ -78,7 +81,7 @@
   $side_cost = $side_drink + $side_nachos;
 
   // calculating subtotal
-  $subtotal = $base_cost + $topping_cost + $side_cost + $side_drink;
+  $subtotal = $base_cost + $topping_cost + $side_cost;
   $subrounded = number_format($subtotal, 2);
 
   // calculating tax
