@@ -17,37 +17,65 @@
     	$base_cost = 11.95;
   	}    
 
-  // determining how many toppings the user selected by counting number of checkboxes checked (code taken from https://stackoverflow.com/questions/18572351/counting-how-many-checkbox-are-checked-php-html
-  $num_checkboxes = $_POST['checkbox'];
-  $num_toppings = count($num_checkboxes);
-
   // declaring constant topping price
   define("TOPPING_PRICE", 0.50);
 
+  // initializing topping cost variable
+  $topping_cost = 0;
+
+  // adding to topping cost based on checkboxes checked (if guacamole is clicked)
+  if (isset($_POST["topping1"])) {
+    $topping_cost++;
+  }
+  // if pico de gallo is clicked
+  if (isset($_POST["topping2"])) {
+    $topping_cost++;
+  }
+  // if mexican crema is clicked
+  if (isset($_POST["topping3"])) {
+    $topping_cost++;
+  }
+  // if medium cheddar is clicked
+  if (isset($_POST["topping4"])) {
+    $topping_cost++;
+  }
+  // if cilantro lime rice is clicked
+  if (isset($_POST["topping5"])) {
+    $topping_cost++;
+  }
+  // if black beans is clicked
+  if (isset($_POST["topping6"])) {
+    $topping_cost++;
+  }
+  
   // determining topping cost
   $topping_cost = $num_toppings * TOPPING_PRICE;
 
   // declaring variables
-  $side_cost = 0;
   $side_drink = 0;
+  $side_nachos = 0;
 
-  // determining whether user wants chips and salsa or not by determining which radio button is selected (code taken from https://www.geeksforgeeks.org/how-to-check-whether-a-radio-button-is-selected-with-javascript/#:~:text=Using%20Input%20Radio%20checked%20property,id%20is%20check%20or%20not.)
-  if (isset($_POST["sideorder-yes"])) {
-    $side_cost = 4.25;
-  }
-    
-  else if (isset($_POST["sideorder-no"])) { 
-    $side_cost = 0;
-  }
 
-  // determining whether user wants a margarita or not by determining which radio button is selected (code taken from https://www.geeksforgeeks.org/how-to-check-whether-a-radio-button-is-selected-with-javascript/#:~:text=Using%20Input%20Radio%20checked%20property,id%20is%20check%20or%20not.)
+  // determining whether user wants a margarita or not by determining which radio button is selected 
   if (isset($_POST["sidedrink-yes"])) {
     $side_drink = 8.15;
   }
     
-    else if (isset($_POST["sidedrink-no"])) {
+  else if (isset($_POST["sidedrink-no"])) {
     $side_drink = 0;
   }
+
+  //determining whether or not user wants a chips and salsa side order based on which radio button is selected
+  if (isset($_POST["sideorder-yes"])) {
+    $side_nachos = 4.25;
+  }
+
+  else if (isset($_POST["sideorder-no"])) {
+    $side_nachos = 0;
+  }
+
+  // determining total for side cost (drinks + nachos)
+  $side_cost = $side_drink + $side_nachos;
 
   // calculating subtotal
   $subtotal = $base_cost + $topping_cost + $side_cost + $side_drink;
