@@ -1,7 +1,7 @@
 <?php
 
   // declaring variables
-  $base_cost = "Please make a selection above.";
+  $base_cost = 0;
 
   // get the user input
 	$size = $_POST['size'];
@@ -22,7 +22,7 @@
   $num_toppings = count($num_checkboxes);
 
   // declaring constant topping price
-  define(TOPPING_PRICE, 0.50);
+  define("TOPPING_PRICE", 0.50);
 
   // determining topping cost
   $topping_cost = $num_toppings * TOPPING_PRICE;
@@ -32,41 +32,37 @@
   $side_drink = 0;
 
   // determining whether user wants chips and salsa or not by determining which radio button is selected (code taken from https://www.geeksforgeeks.org/how-to-check-whether-a-radio-button-is-selected-with-javascript/#:~:text=Using%20Input%20Radio%20checked%20property,id%20is%20check%20or%20not.)
-  if(document.getElementById('yes').checked) {
+  if (isset($_POST["sideorder-yes"])) {
     $side_cost = 4.25;
   }
     
-  if(document.getElementById('no').checked) {
+  else if (isset($_POST["sideorder-no"])) { 
     $side_cost = 0;
   }
 
   // determining whether user wants a margarita or not by determining which radio button is selected (code taken from https://www.geeksforgeeks.org/how-to-check-whether-a-radio-button-is-selected-with-javascript/#:~:text=Using%20Input%20Radio%20checked%20property,id%20is%20check%20or%20not.)
-  if(document.getElementById('yess').checked) {
+  if (isset($_POST["sidedrink-yes"])) {
     $side_drink = 8.15;
   }
     
-  if(document.getElementById('noo').checked) {
+    else if (isset($_POST["sidedrink-no"])) {
     $side_drink = 0;
   }
 
   // calculating subtotal
-  $subtotal = $base_cost + topping_cost + side_cost + side_drink;
+  $subtotal = $base_cost + $topping_cost + $side_cost + $side_drink;
   $subrounded = number_format($subtotal, 2);
 
   // calculating tax
-  declare(HST, 0.13);
+  define("HST", 0.13);
   $tax = $subtotal * HST;
   $taxrounded = number_format($tax, 2);
 
   // calculating total
   $total = $subtotal + $tax;
   $totalrounded = number_format($total, 2);
-?>
 
   // display the message
-  Your subtotal is $<?php echo "$rounded"; ?>.
-  <br>
-  Your HST is $<?php echo "$taxrounded"; ?>.
-  <br>
-  Your total is$<?php echo "$totalrounded"; ?>.
+  echo "Your subtotal is $$subrounded <br>Your HST is $$taxrounded <br>Your total is$$totalrounded.";
+?>
 

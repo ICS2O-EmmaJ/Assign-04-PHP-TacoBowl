@@ -162,17 +162,17 @@
     <br><br>
     <!-- Radio button for side order with default of No (code taken from https://bulma.io/documentation/form/radio/) -->
     <h5>Would you like a side of chips and salsa?</h5>
-    <input type="radio" id="yes" name="sideorder" value="yes">
+    <input type="radio" id="yes" name="sideorder-yes" value="yes">
     <label for="yes">Yes</label><br><br>
-    <input type="radio" id="no" name="sideorder" value="no" checked>
+    <input type="radio" id="no" name="sideorder-no" value="no" checked>
     <label for="no">No</label><br><br>
     <br>
     <br>
     <!-- Radio button for side drink with default of No (code taken from https://bulma.io/documentation/form/radio/) -->
     <h5>Would you like a Margarita with that as well?</h5>
-    <input type="radio" id="yess" name="sidedrink" value="yess">
+    <input type="radio" id="yess" name="sidedrink-yes" value="yess">
     <label for="yess">Yes</label><br><br>
-    <input type="radio" id="noo" name="sidedrink" value="noo" checked>
+    <input type="radio" id="noo" name="sidedrink-no" value="noo" checked>
     <label for="noo">No</label><br><br>
 		<input type="submit" value="Display Cost">
 		</form>
