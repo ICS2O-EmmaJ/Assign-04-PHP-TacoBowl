@@ -24,7 +24,7 @@
     <br>
     <br>
     <!-- Description/Introduction for restaurant -->
-    <?php echo"<h5>Welcome to La Vida en México, where we serve nothing but the freshest of taco bowls and high quality, delicious, authentic Mexican cuisine! With so many choices and ingredients, you are sure to discover a whole new world of tasty and vibrant flavours. At La Vida en México, we believe that better ingredients equals better food, so prepare to taste the best taco bowl that will have you asking for seconds in no time!</h5>"; ?>     
+    <center><?php echo"<h6>Welcome to La Vida en México, where we serve nothing but the freshest of taco bowls and high quality, delicious, authentic Mexican cuisine! With so many choices and ingredients, you are sure to discover a whole new world of tasty and vibrant flavours. At La Vida en México, we believe that better ingredients equals better food, so prepare to taste the best taco bowl that will have you asking for seconds in no time!</h6>"; ?></center>
     <center><?php echo "<h4>Our Ingredients and Menu:</h4>"; ?></center>
         
     <!-- Row of images to show ingredients and sides -->

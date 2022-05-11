@@ -6,17 +6,18 @@
   // get the user input
 	$size = $_POST['size'];
 
-  // calculating base cost using if statements
+  // calculating base cost using if statements. If the size is pequena the base is $7.45
   if ($size == "pequena") {
     $base_cost = 7.45;
   }
+  // calculating base cost using if statements. If the size is mediana the base is $9.35
   else if ($size == "mediana") {
     	$base_cost = 9.35;
   	}
+  // calculating base cost using if statements. If the size is grande the base is $11.95
   	else if ($size == "grande") {		
     	$base_cost = 11.95;
   	}    
-
   // declaring constant topping price
   define("TOPPING_PRICE", 0.50);
 
@@ -94,6 +95,6 @@
   $totalrounded = number_format($total, 2);
 
   // display the message
-  echo "Your subtotal is $$subrounded <br>Your HST is $$taxrounded <br>Your total is$$totalrounded.";
+  echo "Your subtotal is $$subrounded <br>Your HST is $$taxrounded <br>Your total is $$totalrounded.";
 ?>
 
