@@ -87,7 +87,7 @@
         <h2 class="mdl-card__title-text">Welcome</h2>
       </div>
       <div class="mdl-card__supporting-text">
-        We are open from 8AM - 11PM every day! We look forward to seeing there! 
+        We are open from 8AM - 11PM every day! We look forward to seeing you there! 
       </div>
       <div class="mdl-card__actions mdl-card--border">
         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">

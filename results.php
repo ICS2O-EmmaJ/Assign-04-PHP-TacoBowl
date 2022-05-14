@@ -6,17 +6,22 @@
   // get the user input
 	$size = $_POST['size'];
 
+  // declaring constants for sizes
+  define("PEQUENA_COST", 7.45);
+  define("MEDIANA_COST", 9.35);
+  define("GRANDE_COST", 11.95);
+
   // calculating base cost using if statements. If the size is pequena the base is $7.45
   if ($size == "pequena") {
-    $base_cost = 7.45;
+    $base_cost = PEQUENA_COST;
   }
   // calculating base cost using if statements. If the size is mediana the base is $9.35
   else if ($size == "mediana") {
-    	$base_cost = 9.35;
+    	$base_cost = MEDIANA_COST;
   	}
   // calculating base cost using if statements. If the size is grande the base is $11.95
   	else if ($size == "grande") {		
-    	$base_cost = 11.95;
+    	$base_cost = GRANDE_COST;
   	}    
   // declaring constant topping price
   define("TOPPING_PRICE", 0.50);
@@ -52,37 +57,38 @@
   // determining topping cost
   $topping_cost = $num_toppings * TOPPING_PRICE;
 
-  // declaring variables
-  $side_drink = 0;
-  $side_nachos = 0;
+  // declaring variables for side and drink
+
+  // declaring constants for side and drink
+  define("NACHOS_PRICE", 4.25);
+  define("NO_NACHOS", 0);
+  define("MARGARITA_PRICE", 8.15);
+  define("NO_MARGARITA", 0);
 
   // determining whether user wants a margarita or not by determining which radio button is selected
   $sideDrinkChecked = $_POST["sidedrink"];
 
   if ($sideDrinkChecked == "sidedrink-yes") {
-    $side_drink = 8.15;
+    $side_drink = MARGARITA_PRICE;
   }
     
   else if ($sideDrinkChecked == "sidedrink-no") {
-    $side_drink = 0;
+    $side_drink = NO_MARGARITA;
   }
 
   //determining whether or not user wants a chips and salsa side order based on which radio button is selected
   $sideOrderChecked = $_POST["sideorder"];
 
   if ($sideOrderChecked == "sideorder-yes") {
-    $side_nachos = 4.25;
+    $side_nachos = NACHOS_PRICE;
   }
 
   else if ($sideOrderChecked == "sideorder-no") {
-    $side_nachos = 0;
+    $side_nachos = NO_NACHOS;
   }
 
-  // determining total for side cost (drinks + nachos)
-  $side_cost = $side_drink + $side_nachos;
-
   // calculating subtotal
-  $subtotal = $base_cost + $topping_cost + $side_cost;
+  $subtotal = $base_cost + $topping_cost + $side_drink + $side_nachos;
   $subrounded = number_format($subtotal, 2);
 
   // calculating tax
